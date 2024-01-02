@@ -49,30 +49,59 @@ endpointyx(){
 endpoint4(){
     # 生成优选 WARP IPv4 Endpoint IP 段列表
     temp=()
-    for ((b=244; b<=247; b++)); do
-        for ((c=1; c<=254; c++)); do
-            temp+=("103.21.${b}.${c}")
-        done
-    done
-        
-    for ((b=96; b<=111; b++)); do
-        for ((c=1; c<=254; c++)); do
-            temp+=("188.114.${b}.${c}")
-        done
-    done
-                
-    for ((b=0; b<=255; b++)); do
-        for ((c=1; c<=254; c++)); do
-            temp+=("162.158.${b}.${c}")
-        done
-    done
-        
-    for ((b=0; b<=255; b++)); do
-        for ((c=1; c<=254; c++)); do
-            temp+=("162.159.${b}.${c}")
-        done
-    done
-
+    IP_MAXNUM=300
+    for((n=0; n<=IP_MAXNUM; n++)); do
+		case $(($RANDOM % 15)) in
+    
+			0)
+				temp+=($(echo 103.21.$((244 + $RANDOM % 4)).$((1 + $RANDOM % 254))))
+                ;;
+			1)
+				temp+=($(echo 188.114.$((96 + $RANDOM % 16)).$((1 + $RANDOM % 254))))
+                ;;
+			2)
+				temp+=($(echo 162.$((158 + $RANDOM % 2)).$(($RANDOM % 255)).$((1 + $RANDOM % 254))))
+                ;;
+            3)
+				temp+=($(echo 103.22.$((200 + $RANDOM % 4)).$((1 + $RANDOM % 254))))
+                ;;
+            4)
+				temp+=($(echo 103.31.$((4 + $RANDOM % 4)).$((1 + $RANDOM % 254))))
+                ;;
+            5)
+				temp+=($(echo 104.$((16 + $RANDOM % 8)).$(($RANDOM % 255)).$((1 + $RANDOM % 254))))
+                ;;
+            6)
+				temp+=($(echo 104.$((24 + $RANDOM % 4)).$(($RANDOM % 255)).$((1 + $RANDOM % 254))))
+                ;;
+            7)
+				temp+=($(echo 108.162.$((192 + $RANDOM % 64)).$((1 + $RANDOM % 254))))
+                ;;
+            8)
+				temp+=($(echo 131.0.$((72 + $RANDOM % 4)).$((1 + $RANDOM % 254))))
+                ;;
+            9)
+				temp+=($(echo 141.101.$((64 + $RANDOM % 64)).$((1 + $RANDOM % 254))))
+                ;;
+            10)
+				temp+=($(echo 173.245.$((48 + $RANDOM % 16)).$((1 + $RANDOM % 254))))
+                ;;
+            11)
+				temp+=($(echo 190.93.$((240 + $RANDOM % 16)).$((1 + $RANDOM % 254))))
+                ;;
+            12)
+				temp+=($(echo 197.234.$((240 + $RANDOM % 4)).$((1 + $RANDOM % 254))))
+                ;;
+            13)
+				temp+=($(echo 198.41.$((128 + $RANDOM % 128)).$((1 + $RANDOM % 254))))
+                ;;
+            14)
+				temp+=($(echo 172.$((64 + $RANDOM % 8)).$(($RANDOM % 255)).$((1 + $RANDOM % 254))))
+                ;;
+			*)
+				;;
+		esac
+	done
     # 将生成的 IP 段列表放到 ip.txt 里，待程序优选
     echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u > ip.txt
 
