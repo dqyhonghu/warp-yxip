@@ -49,22 +49,28 @@ endpointyx(){
 endpoint4(){
     # 生成优选 WARP IPv4 Endpoint IP 段列表
     temp=()
-    while true; do
-        for b in {244...247}
-            for c in {1...254}
-                temp += "103.21.${b}.${c}"
+    for ((b=244; b<=247; b++)); do
+        for ((c=1; c<=254; c++)); do
+            temp += "103.21.${b}.${c}"
+        done
+    done
         
-        for b in {96...111}
-            for c in {1...254}
-                temp += "188.114.${b}.${c}"
+    for ((b=96; b<=111; b++)); do
+        for ((c=1; c<=254; c++)); do
+            temp += "188.114.${b}.${c}"
+        done
+    done
                 
-        for b in {0...255}
-            for c in {1...254}
-                temp += "162.158.${b}.${c}"
+    for ((b=0; b<=255; b++)); do
+        for ((c=1; c<=254; c++)); do
+            temp += "162.158.${b}.${c}"
+        done
+    done
         
-        for b in {0...255}
-            for c in {1...254}
-                temp += "162.159.${b}.${c}"
+    for ((b=0; b<=255; b++)); do
+        for ((c=1; c<=254; c++)); do
+            temp += "162.159.${b}.${c}"
+        done
     done
 
     # 将生成的 IP 段列表放到 ip.txt 里，待程序优选
