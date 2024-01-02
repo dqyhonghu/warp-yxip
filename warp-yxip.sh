@@ -51,25 +51,25 @@ endpoint4(){
     temp=()
     for ((b=244; b<=247; b++)); do
         for ((c=1; c<=254; c++)); do
-            temp += "103.21.${b}.${c}"
+            temp+=("103.21.${b}.${c}")
         done
     done
         
     for ((b=96; b<=111; b++)); do
         for ((c=1; c<=254; c++)); do
-            temp += "188.114.${b}.${c}"
+            temp+=("188.114.${b}.${c}")
         done
     done
                 
     for ((b=0; b<=255; b++)); do
         for ((c=1; c<=254; c++)); do
-            temp += "162.158.${b}.${c}"
+            temp+=("162.158.${b}.${c}")
         done
     done
         
     for ((b=0; b<=255; b++)); do
         for ((c=1; c<=254; c++)); do
-            temp += "162.159.${b}.${c}"
+            temp+=("162.159.${b}.${c}")
         done
     done
 
